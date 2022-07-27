@@ -1,0 +1,851 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "OpenAPI3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
+  },
+  "paths": {
+    "/VehicleLookup": {
+      "get": {
+        "tags": [
+          "VehicleLookup"
+        ],
+        "operationId": "GetVehicleByRegistrationNumber",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "vehicleReg",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Acceleration": {
+      "type": "object",
+      "properties": {
+        "mph": { },
+        "kph": { }
+      }
+    },
+    "ClassificationDetails": {
+      "type": "object",
+      "properties": {
+        "smmt": {
+          "$ref": "#/definitions/Smmt"
+        },
+        "dvla": {
+          "$ref": "#/definitions/Dvla"
+        }
+      }
+    },
+    "Combined": {
+      "type": "object",
+      "properties": {
+        "lkm": {
+          "format": "double",
+          "type": "number"
+        },
+        "mpg": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "Consumption": {
+      "type": "object",
+      "properties": {
+        "extraUrban": {
+          "$ref": "#/definitions/ExtraUrban"
+        },
+        "urbanCold": {
+          "$ref": "#/definitions/UrbanCold"
+        },
+        "combined": {
+          "$ref": "#/definitions/Combined"
+        }
+      }
+    },
+    "DataItems": {
+      "type": "object",
+      "properties": {
+        "technicalDetails": {
+          "$ref": "#/definitions/TechnicalDetails"
+        },
+        "classificationDetails": {
+          "$ref": "#/definitions/ClassificationDetails"
+        },
+        "vehicleStatus": {
+          "$ref": "#/definitions/VehicleStatus"
+        },
+        "vehicleHistory": {
+          "$ref": "#/definitions/VehicleHistory"
+        },
+        "vehicleRegistration": {
+          "$ref": "#/definitions/VehicleRegistration"
+        },
+        "smmtDetails": {
+          "$ref": "#/definitions/SmmtDetails"
+        },
+        "motHistory": {
+          "$ref": "#/definitions/MotHistory"
+        }
+      }
+    },
+    "DataKeys": {
+      "type": "object",
+      "properties": {
+        "vrm": {
+          "type": "string"
+        }
+      }
+    },
+    "Dimensions": {
+      "type": "object",
+      "properties": {
+        "unladenWeight": { },
+        "rigidArtic": {
+          "type": "string"
+        },
+        "bodyShape": {
+          "type": "string"
+        },
+        "payloadVolume": { },
+        "payloadWeight": { },
+        "height": {
+          "format": "double",
+          "type": "number"
+        },
+        "numberOfSeats": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "kerbWeight": {
+          "format": "double",
+          "type": "number"
+        },
+        "grossTrainWeight": { },
+        "loadLength": { },
+        "dataVersionNumber": { },
+        "wheelBase": { },
+        "carLength": {
+          "format": "double",
+          "type": "number"
+        },
+        "width": {
+          "format": "double",
+          "type": "number"
+        },
+        "numberOfAxles": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "grossVehicleWeight": { },
+        "grossCombinedWeight": { }
+      }
+    },
+    "Dvla": {
+      "type": "object",
+      "properties": {
+        "modelCode": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "makeCode": {
+          "type": "string"
+        },
+        "make": {
+          "type": "string"
+        }
+      }
+    },
+    "Engine": {
+      "type": "object",
+      "properties": {
+        "stroke": {
+          "format": "double",
+          "type": "number"
+        },
+        "primaryFuelFlag": {
+          "type": "string"
+        },
+        "valvesPerCylinder": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "aspiration": {
+          "type": "string"
+        },
+        "numberOfCylinders": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "cylinderArrangement": {
+          "type": "string"
+        },
+        "valveGear": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "bore": {
+          "format": "double",
+          "type": "number"
+        },
+        "make": {
+          "type": "string"
+        }
+      }
+    },
+    "ExtraUrban": {
+      "type": "object",
+      "properties": {
+        "lkm": {
+          "format": "double",
+          "type": "number"
+        },
+        "mpg": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "FirstYear": {
+      "type": "object",
+      "properties": {
+        "sixMonth": { },
+        "twelveMonth": { }
+      }
+    },
+    "General": {
+      "type": "object",
+      "properties": {
+        "engine": {
+          "$ref": "#/definitions/Engine"
+        },
+        "powerDelivery": {
+          "type": "string"
+        },
+        "typeApprovalCategory": {
+          "type": "string"
+        },
+        "drivingAxle": {
+          "type": "string"
+        },
+        "dataVersionNumber": { },
+        "euroStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "KeeperChangesList": {
+      "type": "object",
+      "properties": {
+        "dateOfTransaction": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "numberOfPreviousKeepers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dateOfLastKeeperChange": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "Lookup": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "string"
+        },
+        "statusMessage": {
+          "type": "string"
+        },
+        "adviceTextList": {
+          "type": "array",
+          "items": { }
+        }
+      }
+    },
+    "MaxSpeed": {
+      "type": "object",
+      "properties": {
+        "kph": {
+          "format": "double",
+          "type": "number"
+        },
+        "mph": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "MotHistory": {
+      "type": "object",
+      "properties": {
+        "recordCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "recordList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecordList"
+          }
+        }
+      }
+    },
+    "MotVed": {
+      "type": "object",
+      "properties": {
+        "vedRate": {
+          "$ref": "#/definitions/VedRate"
+        },
+        "vedCo2Emissions": {
+          "format": "double",
+          "type": "number"
+        },
+        "motDue": { },
+        "vedBand": {
+          "type": "string"
+        },
+        "vedCo2Band": {
+          "type": "string"
+        },
+        "taxDue": { },
+        "message": { },
+        "vehicleStatus": { }
+      }
+    },
+    "Mvris": {
+      "type": "object",
+      "properties": {
+        "modelCode": {
+          "type": "string"
+        },
+        "makeCode": {
+          "type": "string"
+        }
+      }
+    },
+    "Performance": {
+      "type": "object",
+      "properties": {
+        "torque": {
+          "$ref": "#/definitions/Torque"
+        },
+        "dataVersionNumber": { },
+        "power": {
+          "$ref": "#/definitions/Power"
+        },
+        "maxSpeed": {
+          "$ref": "#/definitions/MaxSpeed"
+        },
+        "co2": {
+          "format": "double",
+          "type": "number"
+        },
+        "acceleration": {
+          "$ref": "#/definitions/Acceleration"
+        }
+      }
+    },
+    "PlateChangeList": {
+      "type": "object",
+      "properties": {
+        "currentVRM": {
+          "type": "string"
+        },
+        "transferType": {
+          "type": "string"
+        },
+        "dateOfReceipt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "previousVRM": {
+          "type": "string"
+        },
+        "dateOfTransaction": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "Power": {
+      "type": "object",
+      "properties": {
+        "bhp": {
+          "format": "double",
+          "type": "number"
+        },
+        "rpm": {
+          "format": "double",
+          "type": "number"
+        },
+        "kw": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "PremiumVehicle": {
+      "type": "object",
+      "properties": {
+        "yearTwoToSix": {
+          "$ref": "#/definitions/YearTwoToSix"
+        }
+      }
+    },
+    "RecordList": {
+      "type": "object",
+      "properties": {
+        "testDate": {
+          "type": "string"
+        },
+        "expiryDate": {
+          "type": "string"
+        },
+        "testResult": {
+          "type": "string"
+        },
+        "odometerReading": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "testNumber": {
+          "type": "string"
+        },
+        "advisoryNoticeList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "failureReasonList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Request": {
+      "type": "object",
+      "properties": {
+        "requestGuid": {
+          "type": "string"
+        },
+        "packageId": {
+          "type": "string"
+        },
+        "packageVersion": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "responseVersion": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dataKeys": {
+          "$ref": "#/definitions/DataKeys"
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "string"
+        },
+        "statusMessage": {
+          "type": "string"
+        },
+        "statusInformation": {
+          "$ref": "#/definitions/StatusInformation"
+        },
+        "dataItems": {
+          "$ref": "#/definitions/DataItems"
+        }
+      }
+    },
+    "Smmt": {
+      "type": "object",
+      "properties": {
+        "make": {
+          "type": "string"
+        },
+        "mvris": {
+          "$ref": "#/definitions/Mvris"
+        },
+        "trim": {
+          "type": "string"
+        },
+        "range": {
+          "type": "string"
+        }
+      }
+    },
+    "SmmtDetails": {
+      "type": "object",
+      "properties": {
+        "range": {
+          "type": "string"
+        },
+        "fuelType": {
+          "type": "string"
+        },
+        "engineCapacity": {
+          "type": "string"
+        },
+        "marketSectorCode": {
+          "type": "string"
+        },
+        "countryOfOrigin": {
+          "type": "string"
+        },
+        "modelCode": {
+          "type": "string"
+        },
+        "modelVariant": {
+          "type": "string"
+        },
+        "dataVersionNumber": { },
+        "numberOfGears": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nominalEngineCapacity": {
+          "format": "double",
+          "type": "number"
+        },
+        "marqueCode": {
+          "type": "string"
+        },
+        "transmission": {
+          "type": "string"
+        },
+        "bodyStyle": {
+          "type": "string"
+        },
+        "visibilityDate": {
+          "type": "string"
+        },
+        "sysSetupDate": {
+          "type": "string"
+        },
+        "marque": {
+          "type": "string"
+        },
+        "cabType": {
+          "type": "string"
+        },
+        "terminateDate": { },
+        "series": {
+          "type": "string"
+        },
+        "numberOfDoors": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "driveType": {
+          "type": "string"
+        }
+      }
+    },
+    "Standard": {
+      "type": "object",
+      "properties": {
+        "sixMonth": {
+          "format": "double",
+          "type": "number"
+        },
+        "twelveMonth": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "StatusInformation": {
+      "type": "object",
+      "properties": {
+        "lookup": {
+          "$ref": "#/definitions/Lookup"
+        }
+      }
+    },
+    "TechnicalDetails": {
+      "type": "object",
+      "properties": {
+        "dimensions": {
+          "$ref": "#/definitions/Dimensions"
+        },
+        "general": {
+          "$ref": "#/definitions/General"
+        },
+        "performance": {
+          "$ref": "#/definitions/Performance"
+        },
+        "consumption": {
+          "$ref": "#/definitions/Consumption"
+        }
+      }
+    },
+    "Torque": {
+      "type": "object",
+      "properties": {
+        "ftLb": {
+          "format": "double",
+          "type": "number"
+        },
+        "nm": {
+          "format": "double",
+          "type": "number"
+        },
+        "rpm": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "UrbanCold": {
+      "type": "object",
+      "properties": {
+        "lkm": {
+          "format": "double",
+          "type": "number"
+        },
+        "mpg": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "VedRate": {
+      "type": "object",
+      "properties": {
+        "firstYear": {
+          "$ref": "#/definitions/FirstYear"
+        },
+        "premiumVehicle": {
+          "$ref": "#/definitions/PremiumVehicle"
+        },
+        "standard": {
+          "$ref": "#/definitions/Standard"
+        }
+      }
+    },
+    "Vehicle": {
+      "type": "object",
+      "properties": {
+        "request": {
+          "$ref": "#/definitions/Request"
+        },
+        "response": {
+          "$ref": "#/definitions/Response"
+        }
+      }
+    },
+    "VehicleHistory": {
+      "type": "object",
+      "properties": {
+        "v5CCertificateCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "plateChangeCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfPreviousKeepers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "v5CCertificateList": { },
+        "keeperChangesCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "vicCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "colourChangeCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "colourChangeList": { },
+        "keeperChangesList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KeeperChangesList"
+          }
+        },
+        "plateChangeList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlateChangeList"
+          }
+        },
+        "vicList": { }
+      }
+    },
+    "VehicleRegistration": {
+      "type": "object",
+      "properties": {
+        "dateOfLastUpdate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "colour": {
+          "type": "string"
+        },
+        "abiBrokerNetCode": { },
+        "vehicleClass": {
+          "type": "string"
+        },
+        "engineNumber": {
+          "type": "string"
+        },
+        "engineCapacity": {
+          "type": "string"
+        },
+        "transmissionCode": {
+          "type": "string"
+        },
+        "dtpMakeCode": {
+          "type": "string"
+        },
+        "exported": {
+          "type": "boolean"
+        },
+        "yearOfManufacture": {
+          "type": "string"
+        },
+        "wheelPlan": { },
+        "dateExported": { },
+        "scrapped": {
+          "type": "boolean"
+        },
+        "transmission": {
+          "type": "string"
+        },
+        "dateFirstRegisteredUk": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "gearCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "importNonEu": {
+          "type": "boolean"
+        },
+        "dtpModelCode": {
+          "type": "string"
+        },
+        "previousVrmGb": { },
+        "grossWeight": {
+          "format": "double",
+          "type": "number"
+        },
+        "doorPlanLiteral": {
+          "type": "string"
+        },
+        "mvrisModelCode": {
+          "type": "string"
+        },
+        "vin": {
+          "type": "string"
+        },
+        "vrm": {
+          "type": "string"
+        },
+        "dateFirstRegistered": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dateScrapped": { },
+        "doorPlan": {
+          "type": "string"
+        },
+        "vinLast5": {
+          "type": "string"
+        },
+        "vehicleUsedBeforeFirstRegistration": {
+          "type": "boolean"
+        },
+        "maxPermissibleMass": {
+          "format": "double",
+          "type": "number"
+        },
+        "make": {
+          "type": "string"
+        },
+        "makeModel": {
+          "type": "string"
+        },
+        "transmissionType": {
+          "type": "string"
+        },
+        "seatingCapacity": { },
+        "fuelType": {
+          "type": "string"
+        },
+        "co2Emissions": {
+          "format": "double",
+          "type": "number"
+        },
+        "imported": {
+          "type": "boolean"
+        },
+        "mvrisMakeCode": {
+          "type": "string"
+        },
+        "previousVrmNi": { },
+        "vinConfirmationFlag": { }
+      }
+    },
+    "VehicleStatus": {
+      "type": "object",
+      "properties": {
+        "motVed": {
+          "$ref": "#/definitions/MotVed"
+        }
+      }
+    },
+    "YearTwoToSix": {
+      "type": "object",
+      "properties": {
+        "twelveMonth": { },
+        "sixMonth": { }
+      }
+    }
+  }
+}
